@@ -108,15 +108,6 @@ def dailey_score(limit:int):
 
 # In[8]:
 
-
-@bot.command()
-async def leader(ctx, limit: int):
-"""
-    #Get the leaders of average FanPts
-"""
-    df= dailey_score(limit=25)
-    await ctx.send(file=discord.File('table.png'))
-
 target_channel_id = 880452946029076490
 @tasks.loop(hours=24)
 async def called_once_a_day():
