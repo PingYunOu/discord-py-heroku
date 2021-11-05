@@ -78,7 +78,7 @@ def get_colwidth(df):
 
 def draw_table(df):
     col_width = get_colwidth(df)
-    plt.rcParams['font.sans-serif'] = [SimHei']
+    plt.rcParams['font.sans-serif'] = ['SimHei']
     fig, ax = plt.subplots(figsize=(15, 15)) # set size frame
     ax.xaxis.set_visible(False)  # hide the x axis
     ax.yaxis.set_visible(False)  # hide the y axis
