@@ -1,7 +1,7 @@
 import re
 import os
 import random
-
+import time
 import pandas as pd
 import matplotlib.pyplot as plt
 import requests
@@ -109,17 +109,19 @@ def dailey_score(limit:int):
 # In[8]:
 
 target_channel_id = 880452946029076490
-@tasks.loop(hours=24)
+@tasks.loop(minutes=10)
 async def called_once_a_day():
-    message_channel = bot.get_channel(target_channel_id)
-    print(f"Got channel {message_channel}")
-    df= dailey_score(limit=25)
-    await message_channel.send(file=discord.File('table.png'))
+    t = time.gmtime()
+    hour = t.tm_hour
+    minute = t.tm_min
+    if hour == 7:
+        if minute < 59 and minute >= 50:
+            message_channel = bot.get_channel(target_channel_id)
+            print(f"Got channel {message_channel}")
+            df= dailey_score(limit=25)
+            await message_channel.send(file=discord.File('table.png'))
 
-@called_once_a_day.before_loop
-async def before():
-    await bot.wait_until_ready()
-    print("Finished waiting")
+
 
 called_once_a_day.start()
 # In[9]:
