@@ -52,7 +52,7 @@ def nbaget(count):
     data = pd.read_html(html_str)[0]
     data.columns=data.columns.droplevel()
     data['FanPts']=data['Fan Pts']
-    data = data.loc[:,['Players','Roster Status','FanPts','FGM*','FGA*','3PTM*','FTM*','FTA*','PTS*','REB*','AST*','ST*','BLK*','TO*']]
+    data = data.loc[:,['Players','Roster Status','FanPts','FGM','FGA','3PTM','FTM','FTA','PTS','REB','AST','ST','BLK','TO']]
     for i in range(len(data)):
         play=re.findall(r'Notes? (.+)',data.iloc[i,0])[0]
         data.iloc[i,0]=play
@@ -114,7 +114,7 @@ async def called_once_a_day():
     t = time.gmtime()
     hour = t.tm_hour
     minute = t.tm_min
-    if hour == 7:
+    if hour == 6:
         if minute < 59 and minute >= 50:
             message_channel = bot.get_channel(target_channel_id)
             print(f"Got channel {message_channel}")
