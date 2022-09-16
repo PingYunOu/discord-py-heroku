@@ -39,7 +39,7 @@ async def roll(ctx, dice: str):
 def nbaget(count):
 #     get the url
 
-    stat_page = requests.get(f'https://basketball.fantasysports.yahoo.com/nba/4577/players?status=ALL&pos=P&cut_type=33&stat1=S_L&myteam=0&sort=PTS&sdir=1&count={count}') 
+    stat_page = requests.get(f'https://basketball.fantasysports.yahoo.com/nba/20737/players?status=ALL&pos=P&cut_type=33&stat1=S_L&myteam=0&sort=PTS&sdir=1&count={count}') 
     content = stat_page.content
 
 # find the id by beautiful soup
