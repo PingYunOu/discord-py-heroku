@@ -23,8 +23,10 @@ async def on_ready():
 @bot.command()
 async def roll(ctx, dice: str):
     """Rolls a dice in NdN format."""
+    print('rolling')
     try:
         rolls, num = map(int, dice.split('d'))
+        print('dice rolled')
     except Exception:
         await ctx.send('Format has to be in NdN!')
         return
